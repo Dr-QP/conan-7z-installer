@@ -1,0 +1,20 @@
+build: false
+
+environment:
+    PYTHON: "C:\\Python27"
+    PYTHON_VERSION: "2.7.8"
+    PYTHON_ARCH: "32"
+
+    CONAN_USERNAME: "conan"
+    CONAN_CHANNEL: "testing"
+    CONAN_STABLE_BRANCH_PATTERN: "release/*"
+    VS150COMNTOOLS: "C:\\Program Files (x86)\\Microsoft Visual Studio\\2017\\Community\\Common7\\Tools\\"
+
+install:
+  - set PATH=%PATH%;%PYTHON%/Scripts/
+  - pip.exe install git+https://github.com/anton-matosov/conan.git --upgrade
+  - pip.exe install git+https://github.com/conan-io/conan-package-tools.git
+  - conan user # It creates the conan data directory
+
+test_script:
+  - python build.py
